@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PW Project</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        footer {
+            background-color: #00001b;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 3px;
+            width: 100%;
+        }
+
+        #header {
+            background-color: #00001b;
+            color: white;
+            display: flex;
+            padding: 10px 10px 15px 10px;
+            justify-content: center;
+            font-weight: bold;
+            margin-top: 0px;
+            font-size: 20px;
+        }
+
+        .book {
+            position: relative;
+            width: 200px;
+            height: 300px;
+        }
+
+        .book img {
+            width: 100%;
+            height: 100%;
+            transition: transform 1s, opacity 0.9s;
+        }
+
+        .info-box {
+            height: 300px;
+            width: 200px;
+            background-color: rgb(255, 187, 0);
+            position: absolute;
+            color: #00001b;
+            top: -9px;
+            left: -8px;
+            opacity: 0;
+            text-align: center;
+            display: flex;
+            font-size: 25px;
+            font-weight: 500;
+            font-family: 'Times New Roman', Times, serif;
+            justify-content: center;
+            align-items: center;
+            margin-left: 4px;
+            transition: 3s;
+        }
+
+        .book:hover img {
+            transform: rotateY(180deg);
+            opacity: 0;
+        }
+
+        .info-box:hover {
+            opacity: 1;
+            transition: ease-in-out 1s;
+        }
+
+        main {
+            margin: 0px;
+            background-image: url(./images/background.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 85vh;
+            width: 100%;
+        }
+
+        .nav-link {
+            color: white !important;
+        }
+
+        hr {
+            font-size: 1px;
+            color: yellow;
+        }
+
+        /* Popup Login Form Styles */
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .popup-box {
+            background-color: #00001b;
+            padding: 30px;
+            border-radius: 10px;
+            color: white;
+            width: 30%;
+            text-align: center;
+            height: 60vh;
+        }
+
+        .popup-box input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #f1c40f;
+            border-radius: 5px;
+            background-color: #000;
+            color: white;
+        }
+
+        .popup-box button {
+            background-color: #f1c40f;
+            color: black;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .popup-box button:hover {
+            background-color: #d4a20b;
+        }
+
+        .popup-box span {
+            display: block;
+            margin-top: 10px;
+            color: #f1c40f;
+            cursor: pointer;
+        }
+
+        @media screen and (min-width: 600px) {
+            #image {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                align-items: center;
+                height: 70vh;
+            }
+
+            #image div {
+                margin-top: 10px;
+            }
+
+            header {
+                height: 76px;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            #image {
+                display: block;
+                margin-left: 100px;
+            }
+
+            #image div {
+                margin-top: 20px;
+            }
+
+            main {
+                height: 150vh;
+            }
+        }
+    </style>
+</head>
+
+<body class="container-fluid" style="background-color: #00001b;">
+    <!-- header -->
+    <header class="navbar navbar-expand-lg">
+        <div class="container-fluid" style="background-color: #00001b;">
+            <a class="navbar-brand" href="./index.html"><img src="./images/logo-transparent.png" alt="image"
+                    class="w-100" height="90"></a>
+            <button class="navbar-toggler text-bg-warning" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent">
+                <span class="navbar-toggler-icon text-warning"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./book1.html">book1</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./book2.html">book2</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./book3.html">book3</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./book4.html">book4</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./book5.html">book5</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./book6.html">book6</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./book7.html">book7</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./book8.html">book8</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./book9.html">book9</a>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline-warning" type="submit">Search</button>
+                    &nbsp; &nbsp;<button class="btn btn-outline-warning" type="button"
+                        onclick="openLoginForm()">Login</button>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <!-- description -->
+    <hr>
+    <nav id="header">
+        Welcome to bookOpedia
+    </nav>
+
+    <!-- main-banner -->
+    <main id="carouselExampleDark" class="carousel slide">
+        <section>
+            <div class="fw-bold fs-4 text-warning d-flex justify-content-center">
+                <span class="bi bi-lightning-charge-fill"></span>
+                Explore Mystery of Wizarding World
+                <span class="bi bi-lightning-charge-fill"></span>
+            </div>
+        </section>
+        <!-- carousel content -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div id="image">
+                    <div class="book">
+                        <a href="./book1.html" class="text-decoration-none text-white text-center">
+                            <img src="./images/book1.jpg" class="img-fluid" alt="Book 1">
+                            <div class="info-box">Click For Detail</div>
+                            <div>Harry Potter and the Philosopher stone</div>
+                        </a>
+                    </div>
+                    <div class="book">
+                        <a href="./book2.html" class="text-decoration-none text-white text-center">
+                            <img src="./images/book2.jpg" class="img-fluid" alt="Book 2">
+                            <div class="info-box">Click For Detail</div>
+                            <div>Harry Potter and the Chamber of Secrets</div>
+                        </a>
+                    </div>
+                    <div class="book">
+                        <a href="./book3.html" class="text-decoration-none text-white text-center">
+                            <img src="./images/book3.jpg" class="img-fluid" alt="Book 3">
+                            <div class="info-box">Click For Detail</div>
+                            <div>Harry Potter and the Prisoner of Azkaban</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div id="image">
+                    <div class="book">
+                        <a href="./book4.html" class="text-decoration-none text-white text-center">
+                            <img src="./images/book4.jpg" class="img-fluid" alt="Book 1">
+                            <div class="info-box">Click For Detail</div>
+                            <div>Harry Potter and the Goblet of Fire</div>
+                        </a>
+                    </div>
+                    <div class="book">
+                        <a href="./book5.html" class="text-decoration-none text-white text-center">
+                            <img src="./images/book5.jpg" class="img-fluid" alt="Book 2">
+                            <div class="info-box">Click For Detail</div>
+                            <div>Harry Potter and the Order of Phoenix</div>
+                        </a>
+                    </div>
+                    <div class="book">
+                        <a href="./book6.html" class="text-decoration-none text-white text-center">
+                            <img src="./images/book6.jpg" class="img-fluid" alt="Book 3">
+                            <div class="info-box">Click For Detail</div>
+                            <div>Harry Potter and the Half Blood Prince</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div id="image">
+                    <div class="book">
+                        <a href="./book7.html" class="text-decoration-none text-white text-center">
+                            <img src="./images/book7.jpg" class="img-fluid" alt="Book 1">
+                            <div class="info-box">Click For Detail</div>
+                            <div>Harry Potter and the Deathly Hallows</div>
+                        </a>
+                    </div>
+                    <div class="book">
+                        <a href="./book8.html" class="text-decoration-none text-white text-center">
+                            <img src="./images/book8.jpg" class="img-fluid" alt="Book 2">
+                            <div class="info-box">Click For Detail</div>
+                            <div>Harry Potter and the Cursed Child</div>
+                        </a>
+                    </div>
+                    <div class="book">
+                        <a href="./book9.html" class="text-decoration-none text-white text-center">
+                            <img src="./images/book9.jpg" class="img-fluid" alt="Book 3">
+                            <div class="info-box">Click For Detail</div>
+                            <div>Fantastic Beasts</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <span class="bi bi-c-circle me-1 "></span>
+        <span>2025 bookOpedia | All rights reserved</span>
+    </footer>
+
+    <!-- Login Popup -->
+    <div id="popup" class="popup-container">
+        <div class="popup-box">
+            <h3>Login</h3>
+            <input type="text" placeholder="Username" id="username">
+            <input type="password" placeholder="Password" id="password">
+            <br><br><br>
+            <button onclick="login()">Login</button>
+            <span onclick="closeLoginForm()">Close</span>
+        </div>
+    </div>
+
+    <script>
+        // Open the login popup
+        function openLoginForm() {
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        // Close the login popup
+        function closeLoginForm() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        // Handle login
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username && password) {
+                alert('Login successful!');
+                closeLoginForm();
+            } else {
+                alert('Please fill in both fields.');
+            }
+        }
+    </script>
+</body>
+
+</html>
